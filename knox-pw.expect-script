@@ -1,4 +1,4 @@
-spawn ./bin/knoxcli.sh create-master --force
+spawn /opt/knox/bin/knoxcli.sh create-master --force
 
 expect "Enter master secret:"
 send "admin\r"
