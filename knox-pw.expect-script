@@ -1,0 +1,9 @@
+spawn ./bin/knoxcli.sh create-master --force
+
+expect "Enter master secret:"
+send "admin\r"
+
+expect "Enter master secret again:"
+send "admin\r"
+
+expect "Master secret has been persisted to disk."
