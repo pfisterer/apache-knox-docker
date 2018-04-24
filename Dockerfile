@@ -27,6 +27,8 @@ WORKDIR $GATEWAY_HOME
 COPY knox-pw.expect-script /tmp
 COPY run-knox.sh /opt
 
+RUN ls -la /opt/knox-1.0.0/bin/
+
 # Remember to change version 1.0.0 in here, too
 RUN /tmp/knox-pw.expect-script
 
