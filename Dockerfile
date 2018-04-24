@@ -20,11 +20,10 @@ WORKDIR /opt
 
 RUN wget -q -O knox.zip http://ftp.fau.de/apache/knox/1.0.0/knox-1.0.0.zip && unzip knox.zip && rm knox.zip
 # TODO Verify download (cf. https://knox.apache.org/books/knox-1-0-0/user-guide.html#Quick+Start)
-ENV GATEWAY_HOME /opt/knox-1.0.0/
 
-RUN ls -la /opt/
-RUN ls -la /opt/knox-1.0.0/
-RUN ls -la /opt/knox-1.0.0/bin/
+RUN ln -s /opt/knox-$KNOX_VERSION /opt/knox
+
+ENV GATEWAY_HOME /opt/knox/
 
 WORKDIR $GATEWAY_HOME
 
@@ -35,12 +34,8 @@ COPY run-knox.sh /opt
 # Remember to change version 1.0.0 in here, too
 RUN /tmp/knox-pw.expect-script
 
-RUN ls -la /opt/
-RUN ls -la /opt/knox-1.0.0/
-RUN ls -la /opt/knox-1.0.0/bin/
-
 # Enable mounting an external config
-VOLUME /opt/knox-1.0.0/conf
+VOLUME /opt/knox/conf
 
 # Expose the port
 EXPOSE 8443
