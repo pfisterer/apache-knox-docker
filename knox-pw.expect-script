@@ -1,3 +1,5 @@
+#!/usr/bin/env expect -d
+
 spawn /opt/knox-1.0.0/bin/knoxcli.sh create-master --force
 
 expect "Enter master secret:"

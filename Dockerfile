@@ -28,7 +28,7 @@ COPY knox-pw.expect-script /tmp
 COPY run-knox.sh /opt
 
 # Remember to change version 1.0.0 in here, too
-RUN expect -f /tmp/knox-pw.expect-script
+RUN /tmp/knox-pw.expect-script
 
 # Enable mounting an external config
 VOLUME /opt/knox-1.0.0/conf
