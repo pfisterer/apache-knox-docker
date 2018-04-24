@@ -14,12 +14,10 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 # Download and prepare knox
 WORKDIR /opt
-RUN wget -q -O knox.zip http://ftp.fau.de/apache/knox/1.0.0/knox-$KNOX_VERSION.zip && unzip knox.zip && rm knox.zip
+RUN wget -q -O knox.zip http://ftp.fau.de/apache/knox/1.0.0/knox-1.0.0.zip && unzip knox.zip && rm knox.zip
 # TODO Verify download (cf. https://knox.apache.org/books/knox-1-0-0/user-guide.html#Quick+Start)
-ENV GATEWAY_HOME /opt/knox-$KNOX_VERSION
+ENV GATEWAY_HOME /opt/knox-1.0.0/
 RUN chown knox:knox $GATEWAY_HOME -R
-
-RUN ln -s $GATEWAY_HOME /opt/knox
 
 # Switch to non-root
 USER knox
@@ -29,14 +27,11 @@ WORKDIR $GATEWAY_HOME
 COPY knox-pw.expect-script /tmp
 COPY run-knox.sh /opt
 
-RUN ls -la /opt
-RUN ls -la /opt/knox
-RUN ls -la /opt/knox/bin
-
+# Remember to change version 1.0.0 in here, too
 RUN expect -f /tmp/knox-pw.expect-script
 
 # Enable mounting an external config
-VOLUME /opt/knox/conf
+VOLUME /opt/knox-1.0.0/conf
 
 # Expose the port
 EXPOSE 8443
