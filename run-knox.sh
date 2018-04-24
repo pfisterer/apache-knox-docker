@@ -13,6 +13,7 @@ trap "kill_app" SIGINT SIGTERM
 
 # Launch daemon
 
+$GATEWAY_HOME/bin/ldap.sh start
 $GATEWAY_HOME/bin/gateway.sh start
 
 sleep 2

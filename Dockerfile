@@ -32,7 +32,13 @@ RUN ls -la /opt/knox-1.0.0/
 RUN ls -la /opt/knox-1.0.0/bin/
 
 # Remember to change version 1.0.0 in here, too
-RUN /tmp/knox-pw.expect-script
+# Does not work on Dockerhub (permission denied @ spawn): RUN /tmp/knox-pw.expect-script
+# Dirty workaround:
+COPY master-secret /opt/knox-1.0.0/data/security/master
+USER root
+RUN chown knox:knox $GATEWAY_HOME -R
+USER knox
+# /workaround
 
 # Enable mounting an external config
 VOLUME /opt/knox-1.0.0/conf
