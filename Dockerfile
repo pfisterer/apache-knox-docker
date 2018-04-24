@@ -16,13 +16,15 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 WORKDIR /opt
 RUN wget -q -O knox.zip http://ftp.fau.de/apache/knox/1.0.0/knox-1.0.0.zip && unzip knox.zip && rm knox.zip
 
-# Fix directory permissions
-RUN find . -type d -print0 | xargs -0 chmod a+x
 
 # TODO Verify download (cf. https://knox.apache.org/books/knox-1-0-0/user-guide.html#Quick+Start)
 
 ENV GATEWAY_HOME /opt/knox-1.0.0/
-RUN chown -R knox:knox $GATEWAY_HOME
+RUN chown -R knox:knox $GATEWAY_HOME 
+RUN chmod ug+rw -R $GATEWAY_HOME
+
+# Fix directory permissions
+RUN find $GATEWAY_HOME -type d -print0 | xargs -0 chmod a+x
 
 # Switch to non-root
 USER knox
