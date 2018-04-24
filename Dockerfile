@@ -17,7 +17,7 @@ WORKDIR /opt
 RUN wget -q -O knox.zip http://ftp.fau.de/apache/knox/1.0.0/knox-1.0.0.zip && unzip knox.zip && rm knox.zip
 # TODO Verify download (cf. https://knox.apache.org/books/knox-1-0-0/user-guide.html#Quick+Start)
 ENV GATEWAY_HOME /opt/knox-1.0.0/
-RUN chown knox:knox $GATEWAY_HOME -R
+RUN chown -R knox:knox $GATEWAY_HOME
 
 # Switch to non-root
 USER knox
