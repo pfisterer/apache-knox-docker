@@ -37,6 +37,7 @@ RUN /tmp/knox-pw.expect-script
 VOLUME /opt/knox/conf
 
 # Expose the port
+EXPOSE 8080
 EXPOSE 8443
 
 # Start knox
