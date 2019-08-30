@@ -26,6 +26,9 @@ Using your own configuration files:
 
 ```bash
 docker run --rm -ti -v /path/to/your/config:/opt/knox/conf farberg/apache-knox-docker:$KNOX_VERSION
+
+# Example on MacOS/Linux: 
+# docker run --rm -ti -v $PWD/my-conf/:/opt/knox/conf/ farberg/apache-knox-docker:$KNOX_VERSION
 ```
 
 ## Build this Docker container
