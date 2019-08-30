@@ -1,4 +1,4 @@
-FROM openjdk:8-jre
+FROM openjdk:9-jre
 LABEL maintainer="Dennis Pfisterer, http://www.dennis-pfisterer.de"
 
 # Prepare the container and install required software
