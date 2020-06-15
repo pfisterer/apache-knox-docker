@@ -1,11 +1,11 @@
-FROM openjdk:9-jre
+FROM openjdk:8-jre
 LABEL maintainer="Dennis Pfisterer, http://www.dennis-pfisterer.de"
 
 # Prepare the container and install required software
 RUN apt-get update && apt-get install -y expect net-tools procps sudo unzip wget 
 
 # The version of Apache Knox to use
-ENV KNOX_VERSION 1.3.0
+ENV KNOX_VERSION 1.4.0
 
 # Create a non-root user to run knox
 RUN groupadd -r knox && useradd --no-log-init -r -g knox knox

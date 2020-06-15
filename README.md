@@ -7,12 +7,13 @@ Docker container for [Apache Knox](https://knox.apache.org/), which is an Applic
 | Apache Knox Version | Docker Tag                        |
 | ------------------- | --------------------------------- |
 | latest              | farberg/apache-knox-docker:latest |
+| 1.4.0               | farberg/apache-knox-docker:1.4.0  |
 | 1.3.0               | farberg/apache-knox-docker:1.3.0  |
 
 Example (required for the commands below to work)
 
 ```bash
-export KNOX_VERSION=1.3.0
+export KNOX_VERSION=1.4.0
 ```
 
 ## Run Apache Knox in Docker
