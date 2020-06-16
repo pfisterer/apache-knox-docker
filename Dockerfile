@@ -2,7 +2,7 @@ FROM openjdk:8-jre
 LABEL maintainer="Dennis Pfisterer, http://www.dennis-pfisterer.de"
 
 # Prepare the container and install required software
-RUN apt-get update && apt-get install -y expect net-tools procps sudo unzip wget 
+RUN apt-get update && apt-get install -y expect net-tools procps sudo unzip wget xtail && apt-get clean
 
 # The version of Apache Knox to use
 ENV KNOX_VERSION 1.4.0
