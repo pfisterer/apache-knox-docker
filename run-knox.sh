@@ -11,19 +11,18 @@ function kill_app(){
 }
 trap "kill_app" SIGINT SIGTERM
 
-# Launch daemon
+# This is needed because ldap.sh and gateway.sh start in the background
+xtail ./logs/ &
 
+# Launch daemon
 $GATEWAY_HOME/bin/ldap.sh start
 $GATEWAY_HOME/bin/gateway.sh start
 
-sleep 2
-
-# This is needed because ldap.sh and gateway.sh start in the background
-tail -F ./logs/* &
+sleep 5
 
 # Loop while the pidfile and the process exist
 while [ -f $pidfile ] && kill -0 $(cat $pidfile) ; do
-    sleep 0.5
+    sleep 1
 done
 
 exit 1
