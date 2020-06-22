@@ -2,6 +2,8 @@
 
 Docker container for [Apache Knox](https://knox.apache.org/), which is an Application Gateway for interacting with the REST APIs and UIs of Apache Hadoop deployments. The image is available on Dockerhub: <https://cloud.docker.com/u/farberg/repository/docker/farberg/apache-knox-docker>.
 
+A helm chart for deployment on k8s is available here: [pfisterer/apache-knox-helm](https://github.com/pfisterer/apache-knox-helm).
+
 ## Available versions
 
 | Apache Knox Version | Docker Tag                        |
