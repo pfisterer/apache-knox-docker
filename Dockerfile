@@ -5,7 +5,7 @@ LABEL maintainer="Dennis Pfisterer, http://www.dennis-pfisterer.de"
 RUN apt-get update && apt-get install -y expect net-tools procps sudo unzip wget xtail && apt-get clean
 
 # The version of Apache Knox to use
-ENV KNOX_VERSION 1.4.0
+ENV KNOX_VERSION 1.5.0
 
 # Create a non-root user to run knox
 RUN groupadd -r knox && useradd --no-log-init -r -g knox knox
@@ -16,14 +16,14 @@ RUN chmod a+rwx /opt
 
 USER knox
 
+# Download
 RUN mkdir -p /opt
 WORKDIR /opt
 
-RUN wget -q -O knox.zip http://ftp-stud.hs-esslingen.de/pub/Mirrors/ftp.apache.org/dist/knox/${KNOX_VERSION}/knox-${KNOX_VERSION}.zip && unzip knox.zip && rm knox.zip
-# TODO Verify download (cf. https://knox.apache.org/books/knox-1-1-0/user-guide.html#Quick+Start)
+RUN wget -q -O knox.zip https://ftp-stud.hs-esslingen.de/pub/Mirrors/ftp.apache.org/dist/knox/${KNOX_VERSION}/knox-${KNOX_VERSION}.zip && unzip knox.zip && rm knox.zip
 
+# Link to /opt/knox
 RUN ln -s /opt/knox-${KNOX_VERSION} /opt/knox
-
 ENV GATEWAY_HOME /opt/knox/
 
 WORKDIR $GATEWAY_HOME

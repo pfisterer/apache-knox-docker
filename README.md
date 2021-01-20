@@ -9,13 +9,14 @@ A helm chart for deployment on k8s is available here: [pfisterer/apache-knox-hel
 | Apache Knox Version | Docker Tag                        |
 | ------------------- | --------------------------------- |
 | latest              | farberg/apache-knox-docker:latest |
+| 1.5.0               | farberg/apache-knox-docker:1.5.0  |
 | 1.4.0               | farberg/apache-knox-docker:1.4.0  |
 | 1.3.0               | farberg/apache-knox-docker:1.3.0  |
 
 Example (required for the commands below to work)
 
 ```bash
-export KNOX_VERSION=1.4.0
+export KNOX_VERSION=1.5.0
 ```
 
 ## Run Apache Knox in Docker
@@ -33,6 +34,7 @@ docker run --rm -ti -v /path/to/your/config:/opt/knox/conf farberg/apache-knox-d
 # Example on MacOS/Linux: 
 # docker run --rm -ti -v $PWD/my-conf/:/opt/knox/conf/ farberg/apache-knox-docker:$KNOX_VERSION
 # docker run --rm -ti -v $PWD/my-conf-1.4.0/:/opt/knox/conf/ farberg/apache-knox-docker:$KNOX_VERSION
+# docker run --rm -ti -v $PWD/my-conf-1.5.0/:/opt/knox/conf/ farberg/apache-knox-docker:$KNOX_VERSION
 ```
 
 ## Build this Docker container
