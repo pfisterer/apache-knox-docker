@@ -5,7 +5,7 @@ LABEL maintainer="Dennis Pfisterer, http://www.dennis-pfisterer.de"
 RUN apt-get update && apt-get install -y expect net-tools procps sudo unzip wget xtail && apt-get clean
 
 # The version of Apache Knox to use
-ENV KNOX_VERSION 1.5.0
+ENV KNOX_VERSION 1.6.1
 
 # Create a non-root user to run knox
 RUN groupadd -r knox && useradd --no-log-init -r -g knox knox
